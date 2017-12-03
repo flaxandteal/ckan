@@ -3,9 +3,10 @@
 from sqlalchemy import *
 from migrate import *
 
+DATABASE_SCHEMA='public'
 
 def upgrade(migrate_engine):
-    meta = MetaData()
+    meta = MetaData(schema=DATABASE_SCHEMA)
 
     state = Table('state', meta,
       Column('id', Integer() ,  primary_key=True, nullable=False),
