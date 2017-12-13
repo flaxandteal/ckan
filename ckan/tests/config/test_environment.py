@@ -22,7 +22,7 @@ class TestUpdateConfig(h.FunctionalTestBase):
 
     ENV_VAR_LIST = [
         ('CKAN_SQLALCHEMY_URL', 'postgresql://mynewsqlurl/'),
-        ('CKAN_SQLALCHEMY_TARGET_SCHEMA', 'public2'),
+        ('CKAN_MIGRATIONS_TARGET_SCHEMA', 'public2'),
         ('CKAN_DATASTORE_WRITE_URL', 'http://mynewdbwriteurl/'),
         ('CKAN_DATASTORE_READ_URL', 'http://mynewdbreadurl/'),
         ('CKAN_SOLR_URL', 'http://mynewsolrurl/solr'),
@@ -62,7 +62,7 @@ class TestUpdateConfig(h.FunctionalTestBase):
         nosetools.assert_equal(config['solr_url'], 'http://mynewsolrurl/solr')
         nosetools.assert_equal(config['sqlalchemy.url'],
                                'postgresql://mynewsqlurl/')
-        nosetools.assert_equal(config['sqlalchemy.target_schema'],
+        nosetools.assert_equal(config['ckan.migrations.target_schema'],
                                'public2')
         nosetools.assert_equal(config['ckan.datastore.write_url'],
                                'http://mynewdbwriteurl/')
@@ -84,8 +84,6 @@ class TestUpdateConfig(h.FunctionalTestBase):
 
         nosetools.assert_equal(config['sqlalchemy.url'],
                                'postgresql://mynewsqlurl/')
-        nosetools.assert_equal(config['sqlalchemy.target_schema'],
-                               'public2')
 
 
 class TestSiteUrlMandatory(object):

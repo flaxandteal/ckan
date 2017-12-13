@@ -11,7 +11,7 @@ class CkanMetaData(MetaData):
     """
 
     def __init__(self, *args, **kwargs):
-        schema = ckan_config.get('sqlalchemy.target_schema')
+        schema = ckan_config.get('ckan.migrations.target_schema')
         if 'schema' not in kwargs and schema:
             kwargs['schema'] = schema
 
