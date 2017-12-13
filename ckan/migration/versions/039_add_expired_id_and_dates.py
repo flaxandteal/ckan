@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 from migrate import *
+from ..metadata import CkanMetaData
 import uuid
 import datetime
 

@@ -2,11 +2,10 @@
 
 from sqlalchemy import *
 from migrate import *
-
-DATABASE_SCHEMA='public'
+from ..metadata import CkanMetaData
 
 def upgrade(migrate_engine):
-    meta = MetaData(schema=DATABASE_SCHEMA)
+    meta = CkanMetaData()
 
     state = Table('state', meta,
       Column('id', Integer() ,  primary_key=True, nullable=False),
