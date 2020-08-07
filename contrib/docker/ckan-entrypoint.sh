@@ -10,6 +10,8 @@ set -e
 : ${CKAN_REDIS_URL:=}
 # URL for datapusher (required unless linked to a container called 'datapusher')
 : ${CKAN_DATAPUSHER_URL:=}
+# Host for the database
+: ${DATABASE_HOST:=db}
 
 CONFIG="${CKAN_CONFIG}/production.ini"
 
@@ -41,7 +43,7 @@ write_config () {
 }
 
 # Wait for PostgreSQL
-while ! pg_isready -h db -U ckan; do
+while ! pg_isready -h $DATABASE_HOST -U postgres; do
   sleep 1;
 done
 
